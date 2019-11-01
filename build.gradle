@@ -1,0 +1,118 @@
+buildscript {
+
+    ext.bouncycastleVersion = '1.64'
+    ext.commonIoVersion = '2.6'
+    ext.groovyVersion = '2.5.8'
+    ext.kotlinVersion = '1.3.50'
+    ext.okhttpVersion = '4.2.2'
+    ext.springBootVersion = '2.2.0.RELEASE'
+    ext.xstreamVersion = '1.4.11.1'
+
+    // this will overwrite spring boot gradle plugin pom properties definition
+    // it must be set if you want to use kotlin above 1.3.x
+    // reference url: https://github.com/spring-gradle-plugins/dependency-management-plugin/issues/235
+    // line at 'wilkinsona commented on 17 Nov 2018'
+    ext['kotlin.version'] = "${kotlinVersion}"
+
+    repositories {
+        maven {
+            url 'http://maven.aliyun.com/nexus/content/groups/public'
+        }
+    }
+
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}"
+        classpath "org.jetbrains.kotlin:kotlin-noarg:${kotlinVersion}"
+        classpath "org.jetbrains.kotlin:kotlin-allopen:${kotlinVersion}"
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
+    }
+
+}
+
+group 'it.barusu'
+version '1.0-SNAPSHOT'
+
+allprojects {
+    version '1.0-SNAPSHOT'
+
+    apply plugin: 'java'
+    apply plugin: 'maven'
+    apply plugin: 'idea'
+    apply plugin: 'eclipse'
+
+    [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+    sourceCompatibility = '1.8'
+    targetCompatibility = '1.8'
+
+    repositories {
+        maven {
+            url 'http://maven.aliyun.com/nexus/content/groups/public'
+        }
+    }
+}
+
+subprojects {
+
+    apply plugin: 'kotlin'
+    apply plugin: 'kotlin-allopen'
+    apply plugin: 'kotlin-noarg'
+    apply plugin: 'kotlin-spring'
+    apply plugin: 'kotlin-jpa'
+    apply plugin: 'kotlin-kapt'
+    apply plugin: 'io.spring.dependency-management'
+
+    compileKotlin.kotlinOptions.jvmTarget = "1.8"
+    compileTestKotlin.kotlinOptions.jvmTarget = "1.8"
+
+    configurations {
+        all*.exclude module: 'spring-boot-starter-tomcat'
+        all*.exclude module: 'junit'
+    }
+
+
+    dependencies {
+        compileOnly 'org.projectlombok:lombok'
+        annotationProcessor 'org.projectlombok:lombok'
+        testCompileOnly 'org.projectlombok:lombok'
+        testAnnotationProcessor 'org.projectlombok:lombok'
+
+        compile 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
+        compile 'org.jetbrains.kotlin:kotlin-reflect'
+
+        testCompile 'org.junit.jupiter:junit-jupiter-engine'
+        testCompile 'org.junit.platform:junit-platform-runner'
+        testCompile 'org.assertj:assertj-core'
+    }
+
+    dependencyManagement {
+        imports {
+            mavenBom "org.springframework.boot:spring-boot-starter-parent:${springBootVersion}"
+        }
+
+        dependencies {
+            dependency "com.squareup.okhttp3:okhttp:${okhttpVersion}"
+            dependency "com.thoughtworks.xstream:xstream:${xstreamVersion}"
+            dependency "org.codehaus.groovy:groovy-templates:${groovyVersion}"
+
+            dependency "org.bouncycastle:bcpkix-jdk15on:${bouncycastleVersion}"
+            dependency "org.bouncycastle:bcmail-jdk15on:${bouncycastleVersion}"
+            dependency "org.bouncycastle:bcpg-jdk15on:${bouncycastleVersion}"
+            dependency "org.bouncycastle:bctls-jdk15on:${bouncycastleVersion}"
+            dependency "org.bouncycastle:bcprov-ext-jdk15on:${bouncycastleVersion}"
+
+            dependency "commons-io:commons-io:${commonIoVersion}"
+        }
+    }
+
+    test {
+        useJUnitPlatform()
+        reports.html.enabled = false
+    }
+
+}
+
+task testReport(type: TestReport) {
+    destinationDir = file("$buildDir/reports/allTests")
+    reportOn subprojects*.test
+}
+

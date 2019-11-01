@@ -1,0 +1,8 @@
+dependencies {
+    compile project(':paymen-common')
+    compile project(':paymen-util')
+    compile 'org.springframework.boot:spring-boot-starter-data-jpa'
+    compile 'org.springframework.boot:spring-boot-starter-data-mongodb'
+
+    compile 'commons-io:commons-io'
+}

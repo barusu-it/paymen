@@ -1,0 +1,24 @@
+
+dependencies {
+    compile 'com.fasterxml.jackson.datatype:jackson-datatype-jdk8'
+    compile 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310'
+    compile 'com.fasterxml.jackson.module:jackson-module-kotlin'
+
+    compile 'com.squareup.okhttp3:okhttp'
+    compile 'com.thoughtworks.xstream:xstream'
+    compile 'org.codehaus.groovy:groovy-templates'
+
+    compile 'org.freemarker:freemarker'
+
+    compile 'commons-codec:commons-codec'
+
+    compile 'org.bouncycastle:bcpkix-jdk15on'
+    compile 'org.bouncycastle:bcmail-jdk15on'
+    compile 'org.bouncycastle:bcpg-jdk15on'
+    compile 'org.bouncycastle:bctls-jdk15on'
+    compile 'org.bouncycastle:bcprov-ext-jdk15on'
+
+    compile 'org.slf4j:slf4j-api'
+
+    testCompile 'ch.qos.logback:logback-classic'
+}
