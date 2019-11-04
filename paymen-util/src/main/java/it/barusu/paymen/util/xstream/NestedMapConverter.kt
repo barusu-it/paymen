@@ -6,7 +6,6 @@ import com.thoughtworks.xstream.converters.UnmarshallingContext
 import com.thoughtworks.xstream.io.HierarchicalStreamReader
 import com.thoughtworks.xstream.io.HierarchicalStreamWriter
 import java.util.*
-import kotlin.collections.AbstractMap
 import kotlin.collections.HashMap
 import kotlin.collections.LinkedHashMap
 
