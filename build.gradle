@@ -2,10 +2,14 @@ buildscript {
 
     ext.bouncycastleVersion = '1.64'
     ext.commonIoVersion = '2.6'
+    ext.embedMongoVersion = '2.2.0'
+    ext.embedRedisVersion = '0.7.2'
     ext.groovyVersion = '2.5.8'
     ext.kotlinVersion = '1.3.50'
+    ext.mapstructVersion = '1.3.0.Final'
     ext.okhttpVersion = '4.2.2'
     ext.springBootVersion = '2.2.0.RELEASE'
+    ext.springCloudVersion = 'Greenwich.SR3'
     ext.xstreamVersion = '1.4.11.1'
 
     // this will overwrite spring boot gradle plugin pom properties definition
@@ -90,17 +94,24 @@ subprojects {
         }
 
         dependencies {
-            dependency "com.squareup.okhttp3:okhttp:${okhttpVersion}"
-            dependency "com.thoughtworks.xstream:xstream:${xstreamVersion}"
-            dependency "org.codehaus.groovy:groovy-templates:${groovyVersion}"
+            dependency "com.squareup.okhttp3:okhttp:$okhttpVersion"
+            dependency "com.thoughtworks.xstream:xstream:$xstreamVersion"
+            dependency "org.codehaus.groovy:groovy-templates:$groovyVersion"
 
-            dependency "org.bouncycastle:bcpkix-jdk15on:${bouncycastleVersion}"
-            dependency "org.bouncycastle:bcmail-jdk15on:${bouncycastleVersion}"
-            dependency "org.bouncycastle:bcpg-jdk15on:${bouncycastleVersion}"
-            dependency "org.bouncycastle:bctls-jdk15on:${bouncycastleVersion}"
-            dependency "org.bouncycastle:bcprov-ext-jdk15on:${bouncycastleVersion}"
+            dependency "org.bouncycastle:bcpkix-jdk15on:$bouncycastleVersion"
+            dependency "org.bouncycastle:bcmail-jdk15on:$bouncycastleVersion"
+            dependency "org.bouncycastle:bcpg-jdk15on:$bouncycastleVersion"
+            dependency "org.bouncycastle:bctls-jdk15on:$bouncycastleVersion"
+            dependency "org.bouncycastle:bcprov-ext-jdk15on:$bouncycastleVersion"
 
-            dependency "commons-io:commons-io:${commonIoVersion}"
+            dependency "commons-io:commons-io:$commonIoVersion"
+
+            dependency "org.mapstruct:mapstruct-jdk8:$mapstructVersion"
+            dependency "org.mapstruct:mapstruct-processor:$mapstructVersion"
+
+            dependency "de.flapdoodle.embed:de.flapdoodle.embed.mongo:$embedMongoVersion"
+            dependency "it.ozimov:embedded-redis:$embedRedisVersion"
+
         }
     }
 
