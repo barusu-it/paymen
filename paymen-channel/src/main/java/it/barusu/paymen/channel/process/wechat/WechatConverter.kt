@@ -15,7 +15,7 @@ import it.barusu.paymen.util.IdUtils
 import java.time.LocalDate
 import java.util.*
 
-class WechatConverter(var freeMarkerHelper: FreeMarkerHelper) : AbstractConverter() {
+class WechatConverter(private var freeMarkerHelper: FreeMarkerHelper) : AbstractConverter() {
 
     companion object {
         const val TEMPLATE_ATTRIBUTE_REQUEST = "request"

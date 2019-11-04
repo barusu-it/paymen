@@ -12,6 +12,7 @@ dependencies {
 
     compile 'commons-codec:commons-codec'
     compile 'commons-io:commons-io'
+    compile 'org.apache.httpcomponents:httpclient'
 
     compile 'org.bouncycastle:bcpkix-jdk15on'
     compile 'org.bouncycastle:bcmail-jdk15on'

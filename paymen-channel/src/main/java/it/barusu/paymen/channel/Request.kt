@@ -9,7 +9,8 @@ import java.time.LocalDateTime
 abstract class Request(val type: RequestType) {
     val createdTime: LocalDateTime = LocalDateTime.now()
     lateinit var content: String
-    lateinit var tranasactionType: TransactionType
+    lateinit var responseContent: String
+    lateinit var transactionType: TransactionType
     lateinit var phase: Phase
     lateinit var secret: ChannelSecret
 }
