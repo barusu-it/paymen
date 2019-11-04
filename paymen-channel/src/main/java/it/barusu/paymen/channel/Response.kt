@@ -4,7 +4,7 @@ import java.time.LocalDateTime
 
 abstract class Response {
     val createdTime: LocalDateTime = LocalDateTime.now()
-    lateinit var code: String
-    lateinit var message: String
-    lateinit var content: String
+    var code: String? = null
+    var message: String? = null
+    var content: String? = null
 }
