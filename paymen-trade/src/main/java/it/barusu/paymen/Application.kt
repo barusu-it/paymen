@@ -1,4 +1,4 @@
-package it.barusu.paymen.trade
+package it.barusu.paymen
 
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
