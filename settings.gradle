@@ -3,4 +3,5 @@ include 'paymen-trade'
 include 'paymen-util'
 include 'paymen-common'
 include 'paymen-channel'
+include 'paymen-merchant'
 
