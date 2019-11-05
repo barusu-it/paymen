@@ -16,7 +16,7 @@ import java.security.SecureRandom
 
 abstract class ChannelTestsUtils {
     companion object {
-        private const val DEFAULT_CHANNEL_NO = "DEFAULT"
+        const val DEFAULT_CHANNEL_NO = "DEFAULT"
         private const val DEFAULT_ENVIRONMENT = "dev"
         private const val BASE_DIRECTION = "channel-secret"
         private const val SUFFIX = ".json"

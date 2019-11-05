@@ -3,6 +3,7 @@ package it.barusu.paymen.channel.config
 import it.barusu.paymen.common.ChannelType
 import it.barusu.paymen.common.Status
 import org.springframework.data.annotation.CreatedDate
+import org.springframework.data.annotation.LastModifiedDate
 import org.springframework.data.jpa.domain.support.AuditingEntityListener
 import java.time.LocalDateTime
 import javax.persistence.*
@@ -35,7 +36,7 @@ data class Channel(
         @Column(nullable = false)
         var createdTime: LocalDateTime? = null,
 
-        @CreatedDate
+        @LastModifiedDate
         @Column(nullable = false)
         var updatedTime: LocalDateTime? = null,
 

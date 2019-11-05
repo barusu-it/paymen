@@ -71,6 +71,8 @@ subprojects {
     configurations {
         all*.exclude module: 'spring-boot-starter-tomcat'
         all*.exclude module: 'junit'
+        // fix 'Warning: TestEngine with ID 'junit-vintage' failed to discover tests'
+        all*.exclude module: 'junit-vintage-engine'
     }
 
 
