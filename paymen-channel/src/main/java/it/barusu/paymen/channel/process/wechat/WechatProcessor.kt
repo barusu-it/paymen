@@ -85,7 +85,7 @@ class WechatProcessor(private val httpClient: HttpClient,
 
     private fun buildHttpClient(request: Request): HttpClient {
         val keyStore = SecurityUtils.getKeyStore(request.secret.privateKeyType!!, request.secret.privateKey!!,
-                request.secret.privateKeyPassword!!, SecurityUtils.DEFAULT_PROVIDER)
+                request.secret.privateKeyPassword!!)
 
         return HttpClients
                 .custom()
